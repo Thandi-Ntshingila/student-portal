@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScholarSphere Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <div class="login-box">
+      <h1 class="title">🎓 ScholarSphere</h1>
+      <input type="text" id="username" placeholder="Enter your full name" />
+      <input type="password" id="password" placeholder="Create a secure password" />
+      <button onclick="login()">Enter Portal</button>
+    </div>
+  </div>
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      if (!username || !password) return alert("Please fill in both fields.");
+      localStorage.setItem("studentName", username);
+      window.location.href = "dashboard.html";
+    }
+  </script>
+  
+</body>
+</html>

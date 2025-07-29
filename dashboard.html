@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <header>
+      <h1>Welcome, <span id="student-name"></span> 🎓</h1>
+      <div class="theme-controls">
+        <button id="theme-toggle">Toggle Dark/Light</button>
+        <select id="color-theme">
+          <option value="default">Vintage</option>
+          <option value="ocean">Ocean</option>
+          <option value="rose">Rose Gold</option>
+        </select>
+      </div>
+      <button id="logout-btn">Logout</button>
+    </header>
+
+    <main class="grid">
+      <section class="widget journal">
+        <h2>📝 Mood Journal</h2>
+        <textarea placeholder="Write your thoughts..." id="journal-entry"></textarea>
+        <button onclick="saveJournal()">Save</button>
+        <button onclick="exportJournalToPDF()">Export to PDF</button>
+      </section>
+
+      <section class="widget todo">
+        <h2>✅ To-Do List</h2>
+        <ul id="todo-list"></ul>
+        <input type="text" id="todo-input" placeholder="New task..." />
+        <button onclick="addTask()">Add Task</button>
+        <button onclick="exportTasksToPDF()">Export Tasks</button>
+      </section>
+
+      <section class="widget planner">
+        <h2>🗓️ Planner</h2>
+        <input type="date" id="planner-date" />
+        <input type="text" id="planner-task" placeholder="Task..." />
+        <button onclick="addPlannerTask()">Add</button>
+        <ul id="planner-list"></ul>
+      </section>
+
+      <section class="widget flashcards">
+        <h2>🎓 Memory Vault (Flashcards)</h2>
+        <textarea id="note-input" placeholder="Paste your notes here..."></textarea>
+        <button onclick="generateFlashcards()">Generate</button>
+        <div id="flashcard"></div>
+        <button onclick="showNextCard()">Next Card</button>
+      </section>
+
+      <section class="widget focus-mode">
+        <h2>🌎 Focus Mode</h2>
+        <select id="ambient-sound">
+          <option value="none">None</option>
+          <option value="rain">Rain</option>
+          <option value="forest">Forest</option>
+          <option value="cafe">Café</option>
+        </select>
+        <button onclick="playSound()">Play</button>
+        <button onclick="stopSound()">Stop</button>
+      </section>
+
+      <section class="widget gamified">
+        <h2>🎮 Progress Tracker</h2>
+        <p>Level: <span id="level">1</span> | XP: <span id="xp">0</span></p>
+      </section>
+
+      <section class="widget ai-assistant">
+        <h2>🤖 Ask Your Assistant</h2>
+        <div id="chat-box"></div>
+        <input type="text" id="chat-input" placeholder="Ask something..." />
+        <button onclick="askAssistant()">Send</button>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    const studentName = localStorage.getItem("studentName");
+    if (!studentName) location.href = "index.html";
+    document.getElementById("student-name").textContent = studentName;
+    loadFlashcard();
+    updateProgress();
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      localStorage.removeItem("studentName");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

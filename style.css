@@ -1,0 +1,147 @@
+/* FILE: style.css */
+
+:root {
+  --bg-color: #fdf6e3;
+  --text-color: #333;
+  --accent-color: #b08968;
+  --widget-bg: #fffaf3;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark {
+  --bg-color: #1e1e1e;
+  --text-color: #eaeaea;
+  --accent-color: #8ab4f8;
+  --widget-bg: #2c2c2c;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+body.ocean {
+  --accent-color: #468faf;
+  --widget-bg: #e0f7fa;
+}
+
+body.rose {
+  --accent-color: #b76e79;
+  --widget-bg: #fff0f5;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--accent-color), var(--widget-bg));
+}
+
+.login-box {
+  background: var(--widget-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px var(--shadow-color);
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.login-box input {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+.login-box button {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.login-box button:hover {
+  transform: scale(1.05);
+}
+
+.dashboard header {
+  padding: 1rem;
+  background-color: var(--accent-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.widget {
+  background: var(--widget-bg);
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  animation: slideUp 0.8s ease;
+}
+
+.widget h2 {
+  margin-top: 0;
+  color: var(--accent-color);
+}
+
+textarea, input[type="text"], input[type="date"] {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  margin: 0.5rem 0;
+}
+
+button {
+  margin-top: 0.5rem;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: darken(var(--accent-color), 10%);
+}
+
+#chat-box {
+  background: white;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
